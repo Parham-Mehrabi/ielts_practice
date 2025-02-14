@@ -1,0 +1,19 @@
+vocab  ---->
+Add Labels.py                [ ]
+add audio                    [*]
+add spelling practice        [*]
+improve UI                   [ ]
+
+
+
+spelling --> 
+create GUI                  [ ]
+embed in other app          [*]
+improve voices              [*]
+improve UX                  [*]
+add a second acceptable option for US spellings [ ]
+
+structure -->
+use OOP for clarity         [ ]
+Add __doc__ for functions   [ ]
+improve codes               [ ]
