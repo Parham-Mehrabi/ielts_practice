@@ -106,6 +106,3 @@ def spelling_practice():
 
 if __name__ == '__main__':
     spelling_practice()
-
-
-    
