@@ -9,6 +9,6 @@ if %errorlevel% neq 0 (
     exit \b
 )
 
-git update
+git pull origin main
 
 pause
