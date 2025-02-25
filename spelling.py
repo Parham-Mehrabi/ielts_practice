@@ -8,6 +8,7 @@ def get_config():
         "skip_errors": True,
         "repeat_errors": True,
         "highlight_errors": True,
+        "shuffle_words": True
     }
     user_input = input("You will set the configs next, enter N to skip with default settings : ")
     user_input += "y"
@@ -31,6 +32,11 @@ def get_config():
         highlight_errors.lower()
         if highlight_errors[0] == 'n':
             config.update({"highlight_errors": False})
+        shuffle_words = input("Do you want to shuffle words? ?Y/n (default Y)")
+        shuffle_words += 'y'
+        shuffle_words.lower()
+        if shuffle_words[0] == 'n':
+            config["shuffle_words"] = False
         return config
     except Exception as e:
         print(e)
@@ -101,7 +107,32 @@ def spelling_practice():
     intro(config)
     with open('./spellings.txt') as f:
         words = f.readlines()
-        random.shuffle(words)
+
+        print("declare offset if any:")
+        print("how many lines to skip from spellings.txt - press enter to skip" )
+        total_lines = len(words)
+        print(f"there are {total_lines} lines in the file")
+        offset = input(f"choose a number between 0 to {total_lines}: ")
+        try:
+            offset = int(offset)
+            if offset >= total_lines: raise ValueError
+        except:
+            offset = 0
+        print(f"{offset} words will be skipped")
+        if offset == 0:
+            print(f"how many words would you like to practice after first word?")
+        elif offset == 1:
+            print(f"how many words would you like to practice after second word?")
+        else:
+            print(f"how many words would you like to practice after {offset+1}th word?")
+        max_word = input("choose the number of words you wish to practice: ")
+        try:
+            max_word = offset + int(max_word) + 1
+            if max_word >= total_lines + 1: raise ValueError
+        except ValueError: max_word = total_lines + 1
+        words = words[offset:max_word]
+        if config['shuffle_words']: random.shuffle(words)
+
     ask_questions(words, config)
 
 if __name__ == '__main__':

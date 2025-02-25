@@ -182,7 +182,7 @@ def vocab_practice():
             print(f"how many words would you like to practice after second word?")
         else:
             print(f"how many words would you like to practice after {offset+1}th word?")
-        max_word = input("choose the number of last word you wish to practice: ")
+        max_word = input("choose the number of words you wish to practice: ")
         try:
             max_word = offset + int(max_word) + 1
             if max_word >= total_lines + 1: raise ValueError
